@@ -3,7 +3,6 @@ using namespace std;
 int n, W, w[100009], v[109];
 long long dp[109][100009];
 
-
 int main() {
     cin >> n, W;
     for (int i = 1; i < n+1; i++) {

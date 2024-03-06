@@ -5,7 +5,7 @@ N, M = map(int, input().split())
 edges = [ list(map(int, input().split())) for i in range(M) ]
 
 # 隣接リストの作成
-G = [ list() for i in range(N + 1) ]
+G = [ list() for _ in range(N + 1) ]
 for a, b in edges:
 	G[a].append(b)
 	G[b].append(a)
