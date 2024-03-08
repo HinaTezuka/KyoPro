@@ -39,3 +39,20 @@ for i in range(q):
     else:
         c = int(c)
         print(Q[c-1][0], Q[c-1][1])
+
+
+# 綺麗な回答(上にも書いた通り、Pythonでdequeを使っても間に合わない)
+N, Q = map(int, input().split())
+A = [(i+1,0) for i in range(N)][::-1]
+
+for _ in range(Q):
+  T, C = input().split()
+  if T == "1":
+    x, y = A[-1]
+    if C == "U": y += 1
+    if C == "D": y -= 1
+    if C == "R": x += 1
+    if C == "L":  x-= 1
+    A.append((x,y))
+  else:
+    print(*A[-int(C)])
