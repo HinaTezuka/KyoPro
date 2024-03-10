@@ -1,25 +1,12 @@
-# 入力
-N = int(input())
-A = list(map(int, input().split()))
-M = int(input())
-B = list(map(int, input().split()))
-L = int(input())
-C = list(map(int, input().split()))
-Q = int(input())
-X = list(map(int, input().split()))
+def m_inp():
+    return map(int, input().split())
 
-import bisect
+n, m = m_inp()
+a = [None] * m
+b = [None] * m
+G = [[] for _ in range(n)]
+for i in range(n):
+    a, b = m_inp()
+    G[a].append(b)
+    G[b].append(a)
 
-l = []
-for i in range(N):
-    for j in range(M):
-        for k in range(L):
-            l.append(A[i]+B[j]+C[k])
-
-l.sort()
-for i in X:
-    idx = bisect.bisect_left(l, i)
-    if idx < len(l) and l[idx] == i:
-        print('Yes')
-    else:
-        print('No')
