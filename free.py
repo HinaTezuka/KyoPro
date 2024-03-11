@@ -1,12 +1,11 @@
-def m_inp():
-    return map(int, input().split())
+h, w = map(int, input().split())
+S = []
+for i in range(h):
+    S.append(input())
 
-n, m = m_inp()
-a = [None] * m
-b = [None] * m
-G = [[] for _ in range(n)]
-for i in range(n):
-    a, b = m_inp()
-    G[a].append(b)
-    G[b].append(a)
+z = [] # '#'の座標
+for i in range(h):
+    for j in range(w):
+        if S[i][j] == '#':
+            z.append((i+1, j+1))
 
