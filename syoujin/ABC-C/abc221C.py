@@ -19,7 +19,7 @@ for num in range(1 << k):
     n1 = ''
     n2 = ''
     for shift in range(k):
-        if num >> shift & 1:
+        if num >> shift & 1 == 1:
             n1 += n[shift]
         else:
             n2 += n[shift]
