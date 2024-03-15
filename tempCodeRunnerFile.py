@@ -1,37 +1,32 @@
-from itertools import combinations
-import copy
+# from string import ascii_lowercase
+from itertools import groupby
+import bisect
 
-n, d, p = map(int, input().split())
-f = list(map(int, input().split()))
+def runLengthEncode(S: str) -> list:
+    grouped = groupby(S)
+    res = []
+    for k, v in grouped:
+        res.append((k, int(len(list(v)))))
+    return res
 
-# 全ての日程で通常料金を使用した場合
-all_normal = sum(f)
+def check(T, S) -> int:
+    diff = abs(len(T) - len(S))  # 初期化時に文字列の長さの違いを計算
 
-# 全ての日程で周遊パス
-pass_tot = 0 # 周遊パスの枚数
-if n % d != 0:
-    pass_tot = int(n / d + 1)
-else:
-    pass_tot = n // d
-all_amount = pass_tot*p # 合計金額
+    # 両方の文字列の各文字を比較し、違いの数を数える
+    for i in range(min(len(T), len(S))):
+        if T[i] != S[i]:
+            diff += 1
 
-# 与えられたリストを降順にソートする
-f = sorted(f, reverse=True)
-# fの累積和を計算する
-f_sum = copy.deepcopy(f)
-for i in range(1, len(f)):
-    f_sum[i] += f_sum[i - 1]
-# print(f_sum)
+    return diff
 
-tot = 10**20
-# for i in range(d, (pass_tot-1)*d):
-#     for c in combinations(f, i):
-#         tot = min(tot, sum(c)+round((n-i)/d)*p)
+n, T_dash = map(str, input().split())
+n = int(n)
+T_dash_coded = runLengthEncode(T_dash)
 
-# f.sort()
-for i in range(1, (pass_tot-1)*d):
-    if i < d: n = 1
-    else: n = i // d
-    tot = min(tot, f_sum[-1]-f_sum[i]+(n*p))
-
-print(min(tot, all_amount, all_normal))
+ans = []
+for i in range(n):
+    s = input()
+    s_coded = runLengthEncode(s)
+    if check(T_dash_coded, s_coded) <= 1:
+        ans.append(i+1)
+print(*ans)
