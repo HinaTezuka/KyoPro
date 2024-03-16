@@ -1,32 +1,24 @@
-# from string import ascii_lowercase
-from itertools import groupby
-import bisect
+from decimal import Decimal, getcontext
+from re import T
+getcontext().prec = 100
 
-def runLengthEncode(S: str) -> list:
-    grouped = groupby(S)
-    res = []
-    for k, v in grouped:
-        res.append((k, int(len(list(v)))))
-    return res
+n = int(input())
+# a = list(map(int, input().split()))
+# b = list(map(int, input().split()))
 
-def check(T, S) -> int:
-    diff = abs(len(T) - len(S))  # 初期化時に文字列の長さの違いを計算
+res = {}
 
-    # 両方の文字列の各文字を比較し、違いの数を数える
-    for i in range(min(len(T), len(S))):
-        if T[i] != S[i]:
-            diff += 1
+for i in range(1, n+1):
+    a, b = map(int, input().split())
+    d = a/(a+b)
+    if d not in res:
+        res[d] = [i]
+    else:
+        res[d].append(i)
 
-    return diff
+res = dict(sorted(res.items(), reverse=True))
+ans = ''
+for key, value in res.items():
+    ans += str(''.join(map(str, value)))
 
-n, T_dash = map(str, input().split())
-n = int(n)
-T_dash_coded = runLengthEncode(T_dash)
-
-ans = []
-for i in range(n):
-    s = input()
-    s_coded = runLengthEncode(s)
-    if check(T_dash_coded, s_coded) <= 1:
-        ans.append(i+1)
 print(*ans)
