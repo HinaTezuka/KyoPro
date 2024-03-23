@@ -23,43 +23,45 @@ int main() {
     int cnt = 0;
     long long ans;
 
-    if (n < 15625) {
+    if (n < 61226) {
         for(int i=0; i < 1000001; i+=2){
-            if (cnt == n) {
-                ans = i-1;
-                break;
-            }
             if (check(i)){
                 cnt++;
             }
+
+            // if (cnt == n) {
+            //     ans = i;
+            //     break;
+            // }
         }
     }
-    else if (15625 < n && n < 1953125) {
-        cnt = 15625;
+    else if (61225 < n) {
+        cnt = 61225;
         for(long long i=1000000; i < 1000000001; i+=2){
-            if (cnt == n) {
-                ans = i-1;
-                break;
-            }
             if (check(i)){
                 cnt++;
+            }
+            if (cnt == n) {
+                ans = i;
+                break;
             }
         }
     }
-    else {
-        for(long long i=1000000000; i < 1000000000001; i+=2){
-            cnt = 1953125;
-            if (cnt == n) {
-                ans = i-1;
-                break;
-            }
-            if (check(i)){
-                cnt++;
-            }
-        }     
-    }
+    // else {
+    //     for(long long i=1000000000; i < 1000000000001; i+=2){
+    //         cnt = 1953125;
+    //         if (cnt == n) {
+    //             ans = i-1;
+    //             break;
+    //         }
+    //         if (check(i)){
+    //             cnt++;
+    //         }
+    //     }     
+    // }
 
     cout << ans << '\n';
+    cout << cnt << '\n';
 
     return 0;
 }
