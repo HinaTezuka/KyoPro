@@ -7,20 +7,22 @@ import sys
 from collections import Counter
 
 S = ''
-Wc = 0
-Bc = 0
-c = 0
-while(True):
+s = []
+for i in range(120):
+    S += 'wbwbwwbwbwbw'
+for i in range(len(S)):
+    for j in range(i+1, len(S)):
+        s.append(S[i:j+1])
+
+for i in s:
+    Wc = 0
+    Bc = 0
+    for j in range(len(i)):
+        if i[j] == 'w': Wc += 1
+        else: Bc += 1
     if Wc == w and Bc == b:
         print('Yes')
         sys.exit()
-    # if Wc > w and Bc > b:
-    #     break
-    if c > 100:
-        break
-    Wc += 7
-    Bc += 5
-    c += 1
 
 
 print('No')
