@@ -1,0 +1,35 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        // {
+        //     "name": "(lldb) Launch",
+        //     "type": "lldb",
+        //     "request": "launch",
+        //     "program": "${workspaceFolder}/a.out",
+        //     "args": [],
+        //     "stopAtEntry": false,
+        //     "cwd": "${workspaceFolder}",
+        //     "environment": [],
+        //     "externalConsole": true,
+        //     "MIMode": "lldb",
+        //     "logging": {
+        //         "trace": true,
+        //         "traceResponse": true,
+        //         "engineLogging": true
+        //     }
+        // },
+        {
+            "name": "C/C++: clang++ アクティブ ファイルのビルドとデバッグ",
+            "type": "lldb",
+            "request": "launch",
+            "program": "${fileDirname}/${fileBasenameNoExtension}",
+            "args": ["<", "${workspaceFolder}/input.txt"],
+            "stopAtEntry": false,
+            "cwd": "${fileDirname}",
+            "environment": [],
+            "externalConsole": false,
+            "MIMode": "lldb",
+            "preLaunchTask": "Build with Clang"
+        }
+    ]
+}

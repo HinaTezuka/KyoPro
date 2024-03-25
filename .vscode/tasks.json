@@ -2,7 +2,7 @@
     "tasks": [
         {
             "type": "cppbuild",
-            "label": "C/C++: clang++ アクティブなファイルのビルド",
+            "label": "Build with Clang",
             "command": "/usr/bin/clang++",
             "args": [
                 "-fdiagnostics-color=always",
