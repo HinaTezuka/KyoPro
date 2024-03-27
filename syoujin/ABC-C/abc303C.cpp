@@ -6,12 +6,20 @@ void print_element(int x) { // for_each(vec.begin(), vec.end(), print_element);
     cout << x << " ";
 }
 
-void move(char command, vector<int>& current, int h) {
+void move(char command, pair<int, int>& current, int& h) {
     h--;
-    if (command=='R') current[0] += 1;
-    if (command=='L') current[0] -= 1;
-    if (command=='U') current[1] += 1;
-    if (command=='D') current[1] -= 1;
+    if (command=='R') {
+        current.first++;
+    }
+    if (command=='L') {
+        current.first--;
+    }
+    if (command=='U') {
+        current.second++;
+    }
+    if (command=='D') {
+        current.second--;
+    }
 }
 
 int main() {
@@ -20,26 +28,27 @@ int main() {
     cin >> n >> m >> h >> k;
     string S;
     cin >> S;
-    // 回復アイテムがある座標
-    vector<vector<int> > kaifuku(m, vector<int>(2));
+    // 回復アイテムがある座標とその座標にある回復アイテムの数
+    map<pair<int, int>, int> kaifuku;
     rep(i, m) {
         int x, y;
         cin >> x >> y;
-        kaifuku[i] = {x, y};
+        // string str_xy = x+y;
+        pair<int, int> p(x, y);
+        if (kaifuku[p] == 0) kaifuku[p] = 1;
+        else kaifuku[p]++;
     }
     // 座標を初期化
-    vector<int> current = {0, 0};
+    pair<int, int> current (0, 0);
     for(char s : S){
         move(s, current, h);
         if (h < 0) {
             cout << "No" << "\n"; 
             return 0;
         }
-        auto it = find(kaifuku.begin(), kaifuku.end(), current);
-        if (it != kaifuku.end() && h < k){
+        if (h < k && kaifuku[current] > 0){
+            kaifuku[current]--;
             h = k;
-            int idx = distance(kaifuku.begin(), it);
-            kaifuku.erase(kaifuku.begin()+idx);
         }
     }
 
