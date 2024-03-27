@@ -33,7 +33,6 @@ int main() {
     rep(i, m) {
         int x, y;
         cin >> x >> y;
-        // string str_xy = x+y;
         pair<int, int> p(x, y);
         if (kaifuku[p] == 0) kaifuku[p] = 1;
         else kaifuku[p]++;
