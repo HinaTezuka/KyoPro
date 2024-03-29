@@ -7,6 +7,6 @@ void print_element(int x) { // for_each(vec.begin(), vec.end(), print_element);
 }
 
 int main() {
-
+    
     return 0;
 }
