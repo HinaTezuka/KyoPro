@@ -17,16 +17,10 @@ int main() {
     bool f = true;
     for (int i = 1; i < n+1; i++){
         if(d[i] <= a) continue;
-        int amari = d[i] % tot;
-        if((amari > a && amari <= b)) {
-            f = false;
-            break;
-        }
+        if(d[i] % tot > a) f = false;
     }
-    
-
     if (f) cout << "Yes" << "\n";
     else cout << "No" << "\n";
 
     return 0;
-}
+};

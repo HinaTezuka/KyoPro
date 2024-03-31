@@ -18,7 +18,7 @@ int main() {
     int n, m;
     cin >> n >> m;
     
-    // 連結リスト
+    // 隣接リスト
     vector<vector<Edge>> G(n+1);
     for(int i = 0; i < m; i++){
         int from, to, weight;
@@ -31,7 +31,7 @@ int main() {
     int ans = 0;
     for (int i = 1; i < n+1; i++){
         if(G[i].empty()) continue;
-        int visited[30]; // 訪問済みの街かどうか
+        int visited[19]; // 訪問済みの街かどうか
         for(int i = 1; i < n+1; i++) visited[i] = -1;
         queue<int> Q;
         Q.push(i);
@@ -62,8 +62,7 @@ int main() {
                 }
             }
             ans = max(ans, tot);
-        }
-        while(next_permutation(p.begin(), p.end()));
+        } while (next_permutation(p.begin(), p.end()));
     }
 
     cout << ans << "\n";
