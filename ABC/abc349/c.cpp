@@ -33,7 +33,7 @@ int main() {
 
     map<char, vector<int>> hmap;
     for(int i = 0; i < S.length(); i++){
-        auto it = find()
+        auto it = find(S.begin(), S.end(), )
     }
     
     return 0;
