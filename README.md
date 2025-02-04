@@ -1,3 +1,3 @@
-### 競プロ精進記録リポ
+### for kyopro
 
-・競プロの勉強記録用リポジトリ
+rep for contests and practice for kyopro.

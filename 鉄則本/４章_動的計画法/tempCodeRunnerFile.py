@@ -1,1 +1,0 @@
-currentRoom -=2

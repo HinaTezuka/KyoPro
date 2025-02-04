@@ -1,3 +1,5 @@
+""" 書き方１ """
+
 # Nodeという名前のクラスを定義します。これはリストの各要素（ノード）を表現します。
 class Node:
     # ノードはデータを持ち、次のノードへの参照（リンク）を持つことができます。
@@ -37,3 +39,25 @@ while currentNode is not None:
     print(currentNode.data)
     # 現在のノードを次のノードに更新します。
     currentNode = currentNode.next
+
+""" 書き方2 """
+
+""" 
+Nodeの構造
+データが入る変数と次のオブジェクトを指すポインターを準備します。
+このクラスを利用して連結リストを作っていきます。 
+"""
+from typing import Any
+class Node(object):
+    def __init__(self, data: Any, next_node: Node = None):
+        self.data = data # データ
+        self.next = next_node # 次のNodeを指す参照変数(ポインタ)
+
+"""
+連結リストの初期化
+連結リストのクラスを作成して、先頭にNoneを追加しておきます。
+この状況はLinkedListをインスタンス化した場合にデータが何も入っていない状態と同じです。
+"""
+class LinkedList(object):
+    def __init__(self, head = None) -> None:
+        self.head = head # インスタンス化した時にNoneをいれておく。
